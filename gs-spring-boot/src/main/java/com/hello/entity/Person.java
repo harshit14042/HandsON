@@ -1,4 +1,5 @@
 package com.hello.entity;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,26 +12,28 @@ public class Person {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	@Column(name="pid")
+	private long pid;
 	
-	private String name;
-	public long getId() {
-		return id;
+	@Column(name="pname")
+	private String pname;
+	public long getPid() {
+		return pid;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setPid(long pid) {
+		this.pid = pid;
 	}
-	public String getName() {
-		return name;
+	public String getPname() {
+		return pname;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setPname(String pname) {
+		this.pname = pname;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (int) (pid ^ (pid >>> 32));
 		return result;
 	}
 	@Override
@@ -42,18 +45,18 @@ public class Person {
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
-		if (id != other.id)
+		if (pid != other.pid)
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", name=" + name + "]";
+		return "Person [id=" + pid + ", name=" + pname + "]";
 	}
-	public Person(long id, String name) {
+	public Person(long pid, String pname) {
 		super();
-		this.id = id;
-		this.name = name;
+		this.pid = pid;
+		this.pname = pname;
 	}
 	public Person() {
 		super();
